@@ -25,7 +25,7 @@ class User extends ObjectDb
 			'comments_count',
 			'flags_read_time',
 			'suspend_until',
-			'twitter_id',
+//			'twitter_id',
 		];
 	}
 }

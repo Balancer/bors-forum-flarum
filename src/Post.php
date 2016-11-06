@@ -16,7 +16,7 @@ class Post extends ObjectDb
 			'create_datetime' => 'time',
 			'owner_id' => 'user_id',
 			'type',
-			'content' => ['type' => 'markdown'],
+			'text' => ['name' => 'content', 'type' => 'markdown'],
 			'modify_time' => 'edit_time',
 			'last_editor_id' => 'edit_user_id',
 			'hide_time',
@@ -24,5 +24,11 @@ class Post extends ObjectDb
 			'ip_address',
 			'is_approved',
 		];
+	}
+
+	function body()
+	{
+		$metaElementsRegexp = '(<[eis]>[^<]*</[eis]>)';
+		return preg_replace($metaElementsRegexp, '', $this->text());
 	}
 }
