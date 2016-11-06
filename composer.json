@@ -1,0 +1,20 @@
+{
+	"name": "balancer/bors-flarum",
+	"description": "Flarum forum adapter for BORS© framework",
+	"authors": [
+		{
+			"name": "Roman =Balancer= Karshiev",
+			"email": "balancer@balancer.ru"
+		}
+	],
+
+	"require": {
+		"balancer/bors-core": "*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"B2\\Flarum\\": "src/"
+		}
+	}
+}
