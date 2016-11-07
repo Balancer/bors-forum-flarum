@@ -40,4 +40,6 @@ class Topic extends ObjectDb
         $flarum_topic->refreshParticipantsCount();
         $flarum_topic->save();
 	}
+
+	function url() { return 'http://forum.bionco.ru/d/'.$this->id().'-'.$this->slug(); }
 }
