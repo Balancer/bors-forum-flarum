@@ -9,8 +9,7 @@
 	],
 
 	"require": {
-		"balancer/bors-core": "*",
-        "s9e/text-formatter": "*"
+		"balancer/bors-core": "*"
 	},
 
 	"autoload": {

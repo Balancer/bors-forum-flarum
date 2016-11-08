@@ -28,7 +28,14 @@ class Post extends ObjectDb
 
 	function body()
 	{
-		$metaElementsRegexp = '(<[eis]>[^<]*</[eis]>)';
-		return preg_replace($metaElementsRegexp, '', $this->text());
+		$app = App::instance();
+		$flarum_app = $app->flarum_app;
+
+        $flarum_app->register('Flarum\Formatter\FormatterServiceProvider');
+
+		$formatter = $flarum_app->make('flarum.formatter');
+
+		$html = $formatter->render($this->text());
+		return $html;
 	}
 }
