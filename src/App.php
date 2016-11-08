@@ -2,6 +2,8 @@
 
 namespace B2\Flarum;
 
+require \B2\Cfg::get('flarum.root').'/vendor/autoload.php';
+
 class FlarumServerAdapter extends \Flarum\Forum\Server
 {
 	public function getFlarumApp()
@@ -21,7 +23,6 @@ class App
 		static $instance;
 		if(empty($instance))
 		{
-			require \B2\Cfg::get('flarum.root').'/vendor/autoload.php';
 			$app = new App;
 			$app->flarum_server = new FlarumServerAdapter(\B2\Cfg::get('flarum.root'));
 			$app->flarum_app = $app->flarum_server->getFlarumApp();
