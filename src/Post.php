@@ -10,7 +10,7 @@ class Post extends ObjectDb
 	{
 		return [
 			'id',
-			'topic_id' => 'discussion_id',
+			'topic_id' => [ 'name' => 'discussion_id', 'class' => Topic::class ],
 			'number',
 //			'create_time' => ['name' => 'UNIX_TIMESTAMP(time)'],
 			'create_datetime' => 'time',
@@ -36,6 +36,12 @@ class Post extends ObjectDb
 		$formatter = $flarum_app->make('flarum.formatter');
 
 		$html = $formatter->render($this->text());
+
+		$title = trim($this->topic()->title());
+
+		$html = preg_replace('!<h2>\s*'.preg_quote($title, '!').'\s*</h2>!is', '', $html);
+		$html = preg_replace("!<hr>\n<p><a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a></p>\n<hr>!", '', $html);
+
 		return $html;
 	}
 }
