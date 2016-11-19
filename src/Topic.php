@@ -41,5 +41,7 @@ class Topic extends ObjectDb
         $flarum_topic->save();
 	}
 
+	function url_ex($foo) { return $this->url(); }
+
 	function url() { return 'http://forum.bionco.ru/d/'.$this->id().'-'.$this->slug(); }
 }

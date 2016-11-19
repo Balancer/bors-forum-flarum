@@ -37,10 +37,27 @@ class Post extends ObjectDb
 
 		$html = $formatter->render($this->text());
 
+		return $html;
+	}
+
+	function body_no_title()
+	{
+		$html = $this->body();
+
 		$title = trim($this->topic()->title());
 
 		$html = preg_replace('!<h2>\s*'.preg_quote($title, '!').'\s*</h2>!is', '', $html);
-		$html = preg_replace("!<hr>\n<p><a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a></p>\n<hr>!", '', $html);
+
+		return $html;
+	}
+
+	function body_no_title_origin()
+	{
+		$html = $this->body_no_title();
+
+		$html = preg_replace('!<h2>\s*'.preg_quote($title, '!').'\s*</h2>!is', '', $html);
+		$html = preg_replace("!<hr>\n<p><a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a></p>!", '', $html);
+		$html = preg_replace("!<p><a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a></p>!", '', $html);
 
 		return $html;
 	}
