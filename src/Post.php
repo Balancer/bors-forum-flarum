@@ -12,7 +12,7 @@ class Post extends ObjectDb
 			'id',
 			'topic_id' => [ 'name' => 'discussion_id', 'class' => Topic::class ],
 			'number',
-//			'create_time' => ['name' => 'UNIX_TIMESTAMP(time)'],
+			'create_time' => 'UNIX_TIMESTAMP(`time`)',
 			'create_datetime' => 'time',
 			'owner_id' => 'user_id',
 			'type',
