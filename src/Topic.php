@@ -17,7 +17,7 @@ class Topic extends ObjectDb
 			'create_time' => 'UNIX_TIMESTAMP(`start_time`)',
 			'author_id' => ['name' => 'start_user_id', 'class' => User::class],
 			'start_post_id' => ['class' => Post::class],
-			'last_time',
+			'modify_time' => 'UNIX_TIMESTAMP(`last_time`)',
 			'last_user_id',
 			'last_post_id',
 			'last_post_number',
