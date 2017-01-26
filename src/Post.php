@@ -48,7 +48,18 @@ class Post extends ObjectDb
 
 		$html = preg_replace('!<h2>\s*'.preg_quote($title, '!').'\s*</h2>!is', '', $html);
 
+//		$html = preg_replace("!(<a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\")(>Источник</a>)!", '$1 class="btn btn-default"$2', $html);
+
 		return $html;
+	}
+
+	function origin()
+	{
+		$html = $this->body();
+		if(preg_match("!<a href=\"(.+?)\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a>!", $html, $m))
+			return $m[1];
+
+		return NULL;
 	}
 
 	function body_no_title_origin()
