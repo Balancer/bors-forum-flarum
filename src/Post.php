@@ -66,6 +66,8 @@ class Post extends ObjectDb
 	{
 		$html = $this->body_no_title();
 
+		$title = trim($this->topic()->title());
+
 		$html = preg_replace('!<h2>\s*'.preg_quote($title, '!').'\s*</h2>!is', '', $html);
 		$html = preg_replace("!<hr>\n<p><a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a></p>!", '', $html);
 		$html = preg_replace("!<p><a href=\".+?\" target=\"_blank\" rel=\"nofollow noreferrer\">Источник</a></p>!", '', $html);

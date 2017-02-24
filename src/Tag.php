@@ -26,4 +26,6 @@ class Tag extends ObjectDb
 			'last_discussion_id',
 		];
 	}
+
+	function title() { return $this->name(); }
 }
