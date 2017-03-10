@@ -28,4 +28,6 @@ class User extends ObjectDb
 //			'twitter_id',
 		];
 	}
+
+	function infonesy_uuid() { return md5($this->email()); }
 }
